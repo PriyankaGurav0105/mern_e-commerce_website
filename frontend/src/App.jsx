@@ -16,6 +16,11 @@ const App = () => {
   return (
     <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
       <Navbar/>
+    {/**
+     * Defines the routes for the application using React Router.
+     * @returns Routes component containing Route components for different paths
+     *          and their corresponding elements.
+     */}
     <Routes>
       <Route path='/' element={<Home/>} />
       <Route path='/collection' element={<Collection/>}/>

@@ -1,3 +1,9 @@
+/**
+ * Functional component for displaying a title with two text elements.
+ * @param {{string}} text1 - The first text element to display.
+ * @param {{string}} text2 - The second text element to display.
+ * @returns JSX element representing the title with the two text elements.
+ */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from 'react'
