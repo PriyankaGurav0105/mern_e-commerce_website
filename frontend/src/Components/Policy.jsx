@@ -1,3 +1,8 @@
+/**
+ * Functional component that displays information about the company's policies.
+ * Includes sections for Easy Exchange Policy, 7 days return Policy, and Best customer support.
+ * @returns JSX element displaying policy information.
+ */
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import { assets } from '../assets/frontend_assets/assets'
