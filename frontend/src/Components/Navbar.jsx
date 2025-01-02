@@ -16,7 +16,9 @@ const Navbar = () => {
 
   return (
     <div className="flex items-center justify-between py-5 font-medium">
-      <img src={assets.logo} className="w-36" />
+     <Link to='/'>
+     <img src={assets.logo} className="w-36" />
+     </Link> 
 
       {/* * Generates a navigation menu with links to different pages. */}
       {/* * @returns A styled unordered list with links to Home, Collection, About, and Contact pages. */}
