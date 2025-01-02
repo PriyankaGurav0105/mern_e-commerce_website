@@ -1,4 +1,9 @@
-/* eslint-disable react/jsx-key */
+/**
+ * Represents the Latest Collection component that displays the latest products.
+ * @returns {JSX.Element} Latest Collection component with the latest products displayed.
+ */
+/* eslint-disable react-hooks/exhaustive-deps */
+
 /* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../Context/ShopContext'
