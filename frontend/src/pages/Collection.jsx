@@ -69,6 +69,10 @@ const Collection = () => {
     setFilterProducts(productsCopy);
   }
 
+  /**
+   * Sorts the products based on the selected sort type.
+   * @returns None
+   */
   const sortProduct =()=>{
     let fpCopy = filterProducts.slice();
 
