@@ -1,3 +1,7 @@
+/**
+ * Functional component that displays a collection of products with filter options.
+ * @returns JSX element displaying the collection of products with filter options.
+ */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState } from 'react'
@@ -14,9 +18,16 @@ const Collection = () => {
   const [filterProducts,setFilterProducts]= useState([]);
   // const [filterBy, setFilterBy] = useState({});
   // const [filterByPrice, setFilterByPrice] = useState({});
-  const [category, setCategory] = useState({});
-  const [subCategory, setSubCategory] = useState({});
+  const [category, setCategory] = useState([]);
+  const [subCategory, setSubCategory] = useState([]);
 
+  /**
+   * Toggle the category based on the event target value.
+   * If the category already includes the target value, remove it from the category.
+   * If the category does not include the target value, add it to the category.
+   * @param {Event} e - The event object containing the target value.
+   * @returns None
+   */
   const toggleCategory = (e) =>{
     if(category.includes(e.target.value)){
       setCategory(prev=>prev.filter(item => item !== e.target.value))
@@ -25,13 +36,46 @@ const Collection = () => {
     }
   }
 
-  useEffect(()=>{
-    setFilterProducts(products)
-  },[])
+  /**
+   * Toggles the subcategory based on the event target value.
+   * If the subcategory already includes the target value, it removes it from the list.
+   * If the subcategory does not include the target value, it adds it to the list.
+   * @param {Event} e - The event object
+   * @returns None
+   */
+  const toggleSubCategory =(e) =>{
+    if(subCategory.includes(e.target.value)){
+      setSubCategory(prev=>prev.filter(item => item !== e.target.value))
+    }else{
+      setSubCategory(prev=> [...prev, e.target.value])
+    }
+  }
+
+  /**
+   * Applies filters to the products list based on selected categories and subcategories.
+   * Updates the filtered products state with the filtered list.
+   * @returns None
+   */
+  const applyFilter=()=>{
+    let productsCopy=products.slice();
+
+    if(category.length>0){
+      productsCopy=productsCopy.filter(item=>category.includes(item.category));
+    }
+    if(subCategory.length>0){
+      productsCopy=productsCopy.filter(item=>subCategory.includes(item.subCategory));
+    }
+    setFilterProducts(productsCopy);
+  }
+
 
   useEffect(()=>{
-  console.log(category);
-  },[category])
+    applyFilter();
+  },[category,subCategory])
+
+  // useEffect(()=>{
+  // console.log(subCategory);
+  // },[subCategory])
 
 
   return (
@@ -62,13 +106,13 @@ const Collection = () => {
         <p className='mb-3 text-sm font-medium'>TYPE</p>
         <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
           <p className='flex gap-2'>
-            <input className='w-3 accent-black'type='checkbox' value={'Topwear'}/>Topwear
+            <input className='w-3 accent-black'type='checkbox' value={'Topwear'} onChange={toggleSubCategory}/>Topwear
           </p>
           <p className='flex gap-2'>
-            <input className='w-3 accent-black'type='checkbox' value={'Bottomwear'}/>Bottomwear
+            <input className='w-3 accent-black'type='checkbox' value={'Bottomwear'} onChange={toggleSubCategory}/>Bottomwear
           </p>
           <p className='flex gap-2'>
-            <input className='w-3 accent-black'type='checkbox' value={'Winterwear'}/>Winterwear
+            <input className='w-3 accent-black'type='checkbox' value={'Winterwear'} onChange={toggleSubCategory}/>Winterwear
           </p>
 
         </div>
