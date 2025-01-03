@@ -3,9 +3,10 @@
  * @returns JSX element containing the navigation bar with links and icons.
  */
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { assets } from "../assets/frontend_assets/assets";
 import { Link, NavLink } from "react-router-dom";
+import { ShopContext } from "../Context/ShopContext";
 
 const Navbar = () => {
   /**
@@ -13,6 +14,8 @@ const Navbar = () => {
      * @returns An array containing the state variable and its setter function.
      */
   const [visible, setVisible] = useState(false);
+
+  const {setShowSearch}=useContext(ShopContext);
 
   return (
     <div className="flex items-center justify-between py-5 font-medium">
@@ -40,7 +43,7 @@ const Navbar = () => {
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink>
       </ul>
-      <div className="flex items-center gap-6">
+      <div onClick={()=>setShowSearch(true)} className="flex items-center gap-6">
         <img src={assets.search_icon} className="w-5 cursor-pointer" alt="" />
 
         {/* * This component represents a dropdown menu with profile options. */}
